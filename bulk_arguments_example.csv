@@ -1,0 +1,3 @@
+Space,Blueprint,Repository,Duration (Minutes),Owners,Inputs
+my_space,hello_world,,10,jane.d@quali.com;john.d@quali.com,my_name:John Doe;host_name:Quali
+my_space,hello_world,blueprints,10,jane.d@quali.com;john.d@quali.com,my_name:Jane Doe;host_name:Quali
