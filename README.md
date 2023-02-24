@@ -1,7 +1,3 @@
-[![PyPI](https://img.shields.io/pypi/pyversions/shellfoundry.svg?maxAge=2592000)]() [![PyPI](https://img.shields.io/pypi/v/shellfoundry.svg?maxAge=2592000)]()
-
----
-
 ![quali](quali.png)
 
 # Torque Bulk Deployer
