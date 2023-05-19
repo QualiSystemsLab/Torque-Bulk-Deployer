@@ -64,7 +64,7 @@ torque_bulk_deployer.exe <authentication info> start_environment --space_name=<s
 
 ### **Create multiple Environments from one or more Blueprints**
 ```powershell
-torque_bulk_deployer.exe <authentication info> start_environments --params_file=<my_csv_file_path> 
+torque_bulk_deployer.exe <authentication info> start_environments --params_file=<my_csv_file_path> --stagger_duration=<stagger_time_in_seconds>
 ```
 
 when providing a params file for a bulk deployment request, it needs to be a .csv file with the following header structure:
@@ -74,6 +74,11 @@ when providing a params file for a bulk deployment request, it needs to be a .cs
 | bp_space_name | bp_name   | bp_repo_name | env_duration_minutes | owner_emails_;_separated | env_inputs | 
 
 **Note:** The first line of the CSV file is considered a headers line and is ignored.
+
+```
+Options:
+    --stagger_duration=<N>                      if specified, there will be an N second delay between launching each environment 
+```
 
 ## Troubleshooting and Help
 

@@ -6,6 +6,7 @@ import json
 import os
 import sys
 from sys import exit
+from time import sleep
 from threading import Thread
 
 import torque_bulk_deployer.consts as consts
@@ -126,17 +127,18 @@ class TorqueDeployerApp:
                                    common_args["env_description"], owner, common_args["source_repo_name"], [], common_args["env_inputs"], results_dictionary)
                 env_creation_threads.append(Thread(target=self.create_environment_executor, args=create_env_args))
 
-            self._execute_threads_in_limited_pool(env_creation_threads)
+            self._execute_threads_in_limited_pool(env_creation_threads, common_args["stagger_duration"])
 
             for env_name, env_id in results_dictionary.items():
                 print(f"Started env {env_name} successfully with id {env_id}: https://portal.qtorque.io/{common_args['space_name']}/sandboxes/{env_id}")
 
-    def _execute_threads_in_limited_pool(self, threads_list):
+    def _execute_threads_in_limited_pool(self, threads_list, stagger_time_seconds):
         joined_threads = 0
         while joined_threads < len(threads_list):
             current_pool = []
             for _ in range(5):
                 if threads_list:
+                    sleep(stagger_time_seconds)
                     current_thread = threads_list.pop()
                     current_thread.start()
                     current_pool.append(current_thread)
